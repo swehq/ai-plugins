@@ -38,9 +38,9 @@ The plugin itself stores and sends nothing. The connector sends Smart Library wh
 its tools: search queries, document and passage ids, optional feedback notes, and three diagnostic
 fields (a short note on why the tool was called, the model id, and a random id that groups the calls
 of one chat). It doesn't receive your conversation. Details are in the
-[privacy policy](https://smart-library-legal.swehq.com/privacy/).
+[privacy policy](https://smart-library-legal.swehq.com/en/privacy/).
 
 ## Support
 
-smart-library@swehq.com · [Documentation](https://smart-library-legal.swehq.com/docs/) ·
+smart-library@swehq.com · [Documentation](https://smart-library-legal.swehq.com/en/docs/) ·
 SWEHQ s.r.o., Prague

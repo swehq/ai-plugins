@@ -6,10 +6,13 @@
   "author": {
     "name": "SWEHQ s.r.o.",
     "email": "smart-library@swehq.com",
-    "url": "https://smart-library-legal.swehq.com"
+    "url": "https://smart-library-legal.swehq.com/en/"
   },
-  "homepage": "https://smart-library-legal.swehq.com/docs/",
-  "privacyPolicyUrl": "https://smart-library-legal.swehq.com/privacy/",
+  "homepage": "https://smart-library-legal.swehq.com/en/",
+  "documentationUrl": "https://smart-library-legal.swehq.com/en/docs/",
+  "supportUrl": "https://smart-library-legal.swehq.com/en/docs/#support",
+  "privacyPolicyUrl": "https://smart-library-legal.swehq.com/en/privacy/",
+  "repository": "https://github.com/swehq/ai-plugins",
   "license": "MIT",
   "keywords": [
     "czech law",
