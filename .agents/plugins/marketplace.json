@@ -1,0 +1,20 @@
+{
+  "name": "swehq",
+  "interface": {
+    "displayName": "SWEHQ"
+  },
+  "plugins": [
+    {
+      "name": "smart-library-insolvence",
+      "source": {
+        "source": "local",
+        "path": "./plugins/smart-library-insolvence"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Research"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "smart-library-insolvence",
+  "displayName": "Smart Library Insolvence",
+  "version": "0.1.0",
+  "description": "Research Czech insolvency law with sources: the Insolvency Act and related codes, Czech case law and insolvency register filings, with a link to the passage behind every claim.",
+  "author": {
+    "name": "SWEHQ s.r.o.",
+    "email": "smart-library@swehq.com",
+    "url": "https://smart-library-legal.swehq.com"
+  },
+  "homepage": "https://smart-library-legal.swehq.com/docs/",
+  "privacyPolicyUrl": "https://smart-library-legal.swehq.com/privacy/",
+  "license": "MIT",
+  "keywords": [
+    "czech law",
+    "insolvency",
+    "insolvence",
+    "case law",
+    "judikatura",
+    "isir",
+    "legal research"
+  ]
+}

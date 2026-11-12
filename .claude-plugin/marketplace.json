@@ -1,0 +1,18 @@
+{
+  "name": "swehq",
+  "owner": {
+    "name": "SWEHQ s.r.o.",
+    "email": "smart-library@swehq.com"
+  },
+  "metadata": {
+    "description": "Plugins by SWEHQ s.r.o."
+  },
+  "plugins": [
+    {
+      "name": "smart-library-insolvence",
+      "source": "./plugins/smart-library-insolvence",
+      "description": "Research Czech insolvency law with sources: the Insolvency Act and related codes, Czech case law and insolvency register filings, with a link to the passage behind every claim.",
+      "category": "legal"
+    }
+  ]
+}

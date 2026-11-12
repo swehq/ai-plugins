@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "smart-library": {
+      "type": "http",
+      "url": "https://smart-library-legal.swehq.com/mcp"
+    }
+  }
+}
