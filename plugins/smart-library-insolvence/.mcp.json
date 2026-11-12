@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "smart-library": {
+    "smart-library-insolvence": {
       "type": "http",
       "url": "https://smart-library-legal.swehq.com/mcp"
     }
