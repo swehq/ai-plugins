@@ -25,8 +25,10 @@ Plugins Directory.
 
 ## Layout
 
-- `plugins/<name>/`: one plugin, in Claude's format (`.claude-plugin/plugin.json`, `.mcp.json`,
-  `skills/`). OpenAI accepts this format and converts the manifest on upload.
+- `plugins/<name>/`: one plugin. Claude reads `.claude-plugin/plugin.json` and `.mcp.json`;
+  OpenAI reads the root `plugin.json` and `mcp.json` (Agent Plugins format, with the OpenAI listing,
+  review test cases and sign-in settings under `extensions.com.openai`). Both use the same `skills/`.
+  Keep the name, version and server URL the same in both.
 - `.claude-plugin/marketplace.json`: the catalog Claude reads.
 - `.agents/plugins/marketplace.json`: the catalog Codex and the ChatGPT app read.
 - `scripts/package.sh <name>`: zips one plugin to `dist/<name>.zip` for the OpenAI portal, which

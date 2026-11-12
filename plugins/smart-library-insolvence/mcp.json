@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "smart-library-insolvence": {
+      "type": "streamable-http",
+      "url": "https://smart-library-legal.swehq.com/mcp",
+      "extensions": {
+        "com.openai": {
+          "auth": {
+            "type": "oauth",
+            "client": {
+              "mode": "dcr"
+            },
+            "baseScopes": [
+              "library:read"
+            ]
+          }
+        }
+      }
+    }
+  }
+}
