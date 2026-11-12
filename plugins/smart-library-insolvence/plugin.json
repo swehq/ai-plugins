@@ -1,0 +1,113 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "smart-library-insolvence",
+  "version": "0.1.0",
+  "description": "Czech insolvency law for ChatGPT: statutes, case law and insolvency register filings, with a link to the source behind every claim.",
+  "author": {
+    "name": "SWEHQ s.r.o.",
+    "email": "smart-library@swehq.com",
+    "url": "https://swehq.com"
+  },
+  "homepage": "https://smart-library-legal.swehq.com/en/",
+  "license": "MIT",
+  "keywords": [
+    "czech law",
+    "insolvency",
+    "case law",
+    "legal research",
+    "insolvenční právo",
+    "judikatura"
+  ],
+  "extensions": {
+    "com.openai": {
+      "interface": {
+        "displayName": "Smart Library Insolvence",
+        "shortDescription": "Czech insolvency law research",
+        "longDescription": "Smart Library connects ChatGPT to a curated library of Czech insolvency law, built for insolvency administrators, lawyers and creditors' legal teams. The documents are in Czech; you can ask in Czech or English.\n\nWhat's in it (over 100,000 documents):\n- Statutes in their current wording from e-Sbírka: the Insolvency Act, Civil Code, Civil Procedure Code and Business Corporations Act, plus explanatory memoranda and Ministry of Justice guidance\n- Case law: over 5,000 Supreme Court decisions, over 2,500 decisions of the high and regional courts, and Constitutional Court rulings on insolvency\n- Over 86,000 decisions and filings from the Czech insolvency register (ISIR), cleaned up and searchable even where the original is a scan\n\nWhat it does:\n- Searches by meaning, several topics at once\n- Finds case numbers, statute sections and document titles exactly\n- Shows a document's outline and reads it by page, chapter or matching passage\n- Lets you report missing or wrong content to the library team\n\nEvery passage comes with a link that opens the original document at the cited spot, so each claim can be checked in one click.\n\nThe plugin only reads the library; the one thing it stores is optional feedback. Smart Library receives what ChatGPT sends to its tools, such as search queries, not your conversation.\n\nRequires a Smart Library account (sign in with Google or Apple). Smart Library helps you research the law; it is not legal advice.",
+        "developerName": "SWEHQ s.r.o.",
+        "category": "Education & Research",
+        "capabilities": [
+          "Search Czech insolvency law by meaning",
+          "Find decisions by case number or statute section",
+          "Read full documents with citations"
+        ],
+        "websiteURL": "https://smart-library-legal.swehq.com/en/",
+        "supportURL": "https://smart-library-legal.swehq.com/en/docs/#support",
+        "privacyPolicyURL": "https://smart-library-legal.swehq.com/en/privacy/",
+        "termsOfServiceURL": "https://smart-library-legal.swehq.com/en/terms/",
+        "defaultPrompt": [
+          "Can an insolvency administrator challenge invoices paid shortly before insolvency?",
+          "Summarise Czech Supreme Court decision 29 ICdo 105/2022.",
+          "Show me § 241 of the Czech Insolvency Act."
+        ],
+        "logo": "./assets/logo.png",
+        "composerIcon": "./assets/logo.png"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Research a legal question in case law",
+              "prompt": "Under Czech insolvency law, can the insolvency administrator challenge invoices the debtor paid to a supplier a few months before the insolvency?",
+              "tools_triggered": "search_czech_law, read_czech_law_document",
+              "expected_behavior": "Explains preferential legal acts under § 241 of the Insolvency Act and the administrator's avoidance action, citing Czech Supreme Court decisions with links to the source passages."
+            },
+            {
+              "description": "Find a court decision by its case number and read it",
+              "prompt": "Find the Czech Supreme Court decision 29 ICdo 105/2022 and summarise how the court reasoned about paying an already-due debt shortly before insolvency.",
+              "tools_triggered": "search_czech_law_exact, read_czech_law_document",
+              "expected_behavior": "Finds 29 ICdo 105/2022 and summarises its reasoning, with links to the decision."
+            },
+            {
+              "description": "Quote a statute section",
+              "prompt": "Show me the exact wording of § 241 of the Czech Insolvency Act.",
+              "tools_triggered": "search_czech_law_exact, read_czech_law_document",
+              "expected_behavior": "Quotes § 241 of the Insolvency Act, linked to the statute in the library."
+            },
+            {
+              "description": "Navigate a long document by its outline",
+              "prompt": "Give me an overview of how the Czech Insolvency Act is structured, then read me the part on debt relief (oddlužení).",
+              "tools_triggered": "czech_law_document_outline, read_czech_law_document",
+              "expected_behavior": "Lists the act's parts and chapters, then summarises the debt-relief part with links to its sections."
+            },
+            {
+              "description": "Send feedback to the library",
+              "prompt": "What is the deadline for a creditor to file a claim in Czech insolvency proceedings? If you find it with a source, tell Smart Library that this answer helped me.",
+              "tools_triggered": "search_czech_law, send_feedback",
+              "expected_behavior": "Answers with the deadline and a link to its source, then sends praise feedback with send_feedback."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Not Czech law: the plugin should not be called; the assistant answers from general knowledge.",
+              "prompt": "How does Chapter 11 bankruptcy work in the US?"
+            },
+            {
+              "description": "Not a legal research request: the plugin should not be called; the assistant writes the email itself.",
+              "prompt": "Write a polite email asking a client to pay an overdue invoice."
+            },
+            {
+              "description": "Unsupported action: the plugin cannot upload or change library content; the assistant explains this without calling a tool.",
+              "prompt": "Add my client's contract to Smart Library so you can search it later."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The plugin does not sell products or process payments."
+      },
+      "publication": {
+        "countries": [
+          "CZ",
+          "SK"
+        ],
+        "release_notes": "Initial release: semantic and exact search across Czech insolvency law, document outlines and reading, citations linking to the source passage, and feedback to the library team.",
+        "translations": {
+          "cs-CZ": {
+            "subtitle": "Rešerše insolvenčního práva",
+            "description": "Smart Library připojí ChatGPT ke knihovně českého insolvenčního práva. Je určená insolvenčním správcům, advokátům a právním oddělením věřitelů.\n\nCo v ní je (přes 100 000 dokumentů):\n- Zákony v aktuálním znění z e-Sbírky: insolvenční zákon, občanský zákoník, občanský soudní řád a zákon o obchodních korporacích, k tomu důvodové zprávy a metodiky Ministerstva spravedlnosti\n- Judikatura: přes 5 000 rozhodnutí Nejvyššího soudu, přes 2 500 rozhodnutí vrchních a krajských soudů a nálezy Ústavního soudu k insolvencím\n- Přes 86 000 rozhodnutí a podání z insolvenčního rejstříku, vyčištěných a prohledatelných i tam, kde je originál jen sken\n\nCo umí:\n- Hledat podle smyslu, i několik témat najednou\n- Přesně najít spisovou značku, paragraf nebo název dokumentu\n- Ukázat osnovu dokumentu a číst ho po stránkách, kapitolách nebo pasážích\n- Nahlásit, když v knihovně něco chybí nebo je špatně\n\nKaždá pasáž má odkaz, který otevře původní dokument na citovaném místě. Každé tvrzení si tak ověříte jedním kliknutím.\n\nPlugin knihovnu jen čte, ukládá pouze nepovinnou zpětnou vazbu. Do Smart Library přichází to, co ChatGPT pošle jejím nástrojům, například hledané dotazy, ne vaše konverzace.\n\nVyžaduje účet Smart Library (přihlášení účtem Google nebo Apple). Smart Library pomáhá s rešerší práva, nejde o právní radu."
+          }
+        }
+      }
+    }
+  }
+}
