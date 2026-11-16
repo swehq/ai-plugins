@@ -1,7 +1,7 @@
 {
   "name": "smart-library-insolvence",
   "displayName": "Smart Library Insolvence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Rešerše českého insolvenčního práva: insolvenční zákon a související předpisy, judikatura a podání z insolvenčního rejstříku. Každé tvrzení s odkazem na původní pasáž.",
   "author": {
     "name": "SWEHQ s.r.o.",
