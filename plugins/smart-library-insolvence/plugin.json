@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smart-library-insolvence",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Czech insolvency law for ChatGPT: statutes, case law and insolvency register filings, with a link to the source behind every claim.",
   "author": {
     "name": "SWEHQ s.r.o.",
@@ -47,31 +47,31 @@
         "test_cases": {
           "positive": [
             {
-              "description": "Research a legal question in case law",
-              "prompt": "Under Czech insolvency law, can the insolvency administrator challenge invoices the debtor paid to a supplier a few months before the insolvency?",
+              "description": "Overview of a specific insolvency case from the insolvency register. Prompt: \"Look up the Czech insolvency proceedings of Arca Investments, a.s. (MSPH 98 INS 723/2021): when did the court declare its insolvency, who is the insolvency administrator, and why are the proceedings held in Prague when the company is Slovak?\"",
+              "prompt": "Look up the Czech insolvency proceedings of Arca Investments, a.s. (MSPH 98 INS 723/2021): when did the court declare its insolvency, who is the insolvency administrator, and why are the proceedings held in Prague when the company is Slovak?",
+              "tools_triggered": "search_czech_law_exact, search_czech_law",
+              "expected_behavior": "States that the court declared the debtor's insolvency in May 2021 (A-186), names the insolvency administrator Ing. Lee Louda, and explains that these are secondary (local) proceedings under Article 3 of EU Regulation 2015/848, with links to the filings from the insolvency register."
+            },
+            {
+              "description": "How the creditors voted on a reorganization plan, from the minutes of a creditors' meeting. Prompt: \"How did the creditor groups vote on the reorganization plan of Arca Investments at the 2025 creditors' meeting?\"",
+              "prompt": "How did the creditor groups vote on the reorganization plan of Arca Investments at the 2025 creditors' meeting?",
               "tools_triggered": "search_czech_law, read_czech_law_document",
-              "expected_behavior": "Explains preferential legal acts under § 241 of the Insolvency Act and the administrator's avoidance action, citing Czech Supreme Court decisions with links to the source passages."
+              "expected_behavior": "Reports the vote from the minutes B-1137: the secured creditor (group 1) voted for, the unsecured creditors (group 2) accepted the plan with 58.13 % of the votes (603 of the 1,079 creditors present), the shareholders (group 3) voted against, and the court decides on confirmation under §§ 348–349 of the Insolvency Act. Links to the minutes."
             },
             {
-              "description": "Find a court decision by its case number and read it",
-              "prompt": "Find the Czech Supreme Court decision 29 ICdo 105/2022 and summarise how the court reasoned about paying an already-due debt shortly before insolvency.",
-              "tools_triggered": "search_czech_law_exact, read_czech_law_document",
-              "expected_behavior": "Finds 29 ICdo 105/2022 and summarises its reasoning, with links to the decision."
+              "description": "Apply the law to a specific case: confirming a reorganization plan that one group rejected. Prompt: \"In the Arca Investments reorganization, the shareholders voted against the plan. Can a Czech court still confirm a reorganization plan that one group rejected? Answer from the Insolvency Act and case law.\"",
+              "prompt": "In the Arca Investments reorganization, the shareholders voted against the plan. Can a Czech court still confirm a reorganization plan that one group rejected? Answer from the Insolvency Act and case law.",
+              "tools_triggered": "search_czech_law, read_czech_law_document",
+              "expected_behavior": "Explains that under § 348(2) of the Insolvency Act the court can confirm a plan that at least one creditor group accepted if it is fair to each group that rejected it, and that under § 349 it is fair to the shareholders if they receive at least what liquidation would give them. Cites the Supreme Court decision 29 NSČR 54/2018 and links to the minutes with the shareholders' vote."
             },
             {
-              "description": "Quote a statute section",
-              "prompt": "Show me the exact wording of § 241 of the Czech Insolvency Act.",
-              "tools_triggered": "search_czech_law_exact, read_czech_law_document",
-              "expected_behavior": "Quotes § 241 of the Insolvency Act, linked to the statute in the library."
-            },
-            {
-              "description": "Navigate a long document by its outline",
-              "prompt": "Give me an overview of how the Czech Insolvency Act is structured, then read me the part on debt relief (oddlužení).",
+              "description": "Navigate a long insolvency administrator's report by its outline. Prompt: \"Open the 2021 report on the economic situation of Arca Investments filed in its insolvency proceedings and summarise what it says about the debtor's assets and how it became insolvent.\"",
+              "prompt": "Open the 2021 report on the economic situation of Arca Investments filed in its insolvency proceedings and summarise what it says about the debtor's assets and how it became insolvent.",
               "tools_triggered": "czech_law_document_outline, read_czech_law_document",
-              "expected_behavior": "Lists the act's parts and chapters, then summarises the debt-relief part with links to its sections."
+              "expected_behavior": "Lists the chapters of the report (MSPH INS 723/2021 – B-133), then summarises the debtor's assets and group structure and its chapter on the insolvency, with links to the passages."
             },
             {
-              "description": "Send feedback to the library",
+              "description": "Send feedback to the library. Prompt: \"What is the deadline for a creditor to file a claim in Czech insolvency proceedings? If you find it with a source, tell Smart Library that this answer helped me.\"",
               "prompt": "What is the deadline for a creditor to file a claim in Czech insolvency proceedings? If you find it with a source, tell Smart Library that this answer helped me.",
               "tools_triggered": "search_czech_law, send_feedback",
               "expected_behavior": "Answers with the deadline and a link to its source, then sends praise feedback with send_feedback."
@@ -79,15 +79,15 @@
           ],
           "negative": [
             {
-              "description": "Not Czech law: the plugin should not be called; the assistant answers from general knowledge.",
+              "description": "Not Czech law: the plugin should not be called; the assistant answers from general knowledge. Prompt: \"How does Chapter 11 bankruptcy work in the US?\"",
               "prompt": "How does Chapter 11 bankruptcy work in the US?"
             },
             {
-              "description": "Not a legal research request: the plugin should not be called; the assistant writes the email itself.",
+              "description": "Not a legal research request: the plugin should not be called; the assistant writes the email itself. Prompt: \"Write a polite email asking a client to pay an overdue invoice.\"",
               "prompt": "Write a polite email asking a client to pay an overdue invoice."
             },
             {
-              "description": "Unsupported action: the plugin cannot upload or change library content; the assistant explains this without calling a tool.",
+              "description": "Unsupported action: the plugin cannot upload or change library content; the assistant explains this without calling a tool. Prompt: \"Add my client's contract to Smart Library so you can search it later.\"",
               "prompt": "Add my client's contract to Smart Library so you can search it later."
             }
           ]
