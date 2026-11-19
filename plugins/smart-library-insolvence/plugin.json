@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "smart-library-insolvence",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Czech insolvency law for ChatGPT: statutes, case law and insolvency register filings, with a link to the source behind every claim.",
   "author": {
     "name": "SWEHQ s.r.o.",
@@ -50,7 +50,7 @@
               "description": "Overview of a specific insolvency case from the insolvency register. Prompt: \"Look up the Czech insolvency proceedings of Arca Investments, a.s. (MSPH 98 INS 723/2021): when did the court declare its insolvency, who is the insolvency administrator, and why are the proceedings held in Prague when the company is Slovak?\"",
               "prompt": "Look up the Czech insolvency proceedings of Arca Investments, a.s. (MSPH 98 INS 723/2021): when did the court declare its insolvency, who is the insolvency administrator, and why are the proceedings held in Prague when the company is Slovak?",
               "tools_triggered": "search_czech_law_exact, search_czech_law",
-              "expected_behavior": "States that the court declared the debtor's insolvency in May 2021 (A-186), names the insolvency administrator Ing. Lee Louda, and explains that these are secondary (local) proceedings under Article 3 of EU Regulation 2015/848, with links to the filings from the insolvency register."
+              "expected_behavior": "States that the Municipal Court in Prague declared the debtor's insolvency on 11 May 2021 (A-186) and appointed Ing. Lee Louda as insolvency administrator. Explains that the court first opened local (secondary) proceedings under Article 3(2) of EU Regulation 2015/848, and that on 13 October 2021 the High Court in Prague (4 VSPH 816/2021-A-249) changed them to main insolvency proceedings under Article 3(1), because the debtor's centre of main interests is in the Czech Republic; may cite the Supreme Court decision 29 NSČR 148/2022. Links to the filings and decisions."
             },
             {
               "description": "How the creditors voted on a reorganization plan, from the minutes of a creditors' meeting. Prompt: \"How did the creditor groups vote on the reorganization plan of Arca Investments at the 2025 creditors' meeting?\"",
